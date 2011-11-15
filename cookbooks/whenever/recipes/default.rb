@@ -15,7 +15,7 @@ if ['solo', 'util'].include?(node[:instance_role])
   execute "whenever" do
     cwd "/data/#{app_name}/current"
     user local_user[:username]
-    command "test -x /data/#{app_name}/shared/bundled_gems/ruby/1.9.1/bin/whenever && bundle exec whenever --update-crontab '#{app_name}_#{node[:environment][:framework_env]}'"
+    command "test -x /data/#{app_name}/shared/bundled_gems/ruby/1.9.1/bin/whenever && bundle exec whenever --update-crontab #{app_name} --set environment=#{node[:environment][:framework_env]}"
     action :run
   end
 
