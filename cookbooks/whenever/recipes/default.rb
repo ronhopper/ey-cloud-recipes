@@ -11,6 +11,12 @@ app_name = "boxcast"
 
 if ['solo', 'util'].include?(node[:instance_role])
 
+  gem_package "bundler" do
+    source "http://rubygems.org"
+    action :install
+    version "1.0.21"
+  end
+
   local_user = node[:users].first
   execute "whenever" do
     cwd "/data/#{app_name}/current"
