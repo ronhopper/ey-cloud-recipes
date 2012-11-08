@@ -1,0 +1,6 @@
+check process clockwork_<%= @app_name %>
+  with pidfile /var/run/engineyard/clockwork/<%= @app_name %>/clockwork.pid
+  start program = "/data/<%= @app_name %>/shared/bin/clockwork <%= @app_name %> start <%= @rails_env %>" with timeout 120 seconds
+  stop program = "/data/<%= @app_name %>/shared/bin/clockwork <%= @app_name %> stop <%= @rails_env %>" with timeout 120 seconds # on purpose
+  if totalmem is greater than 300 MB for 2 cycles then restart # eating up memory?
+  group <%= @app_name %>_clockwork
