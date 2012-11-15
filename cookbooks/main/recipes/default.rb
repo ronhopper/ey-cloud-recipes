@@ -134,5 +134,5 @@ require_recipe "resque"
 # end
 
 require_recipe "clockwork"
-require_recipe "whenever"
+# require_recipe "whenever"
 
